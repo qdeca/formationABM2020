@@ -1,0 +1,23 @@
+package fr.abm.geometry.entity;
+
+public class Square extends Rectangle {
+	
+	public Square(double side) {
+		super(side, side);
+	}
+	
+	public double getSide() {
+		return this.getLength();
+		// return this.width;
+	}
+
+	
+	public void setSide(double side) {
+		this.setLength(side);
+		this.setWidth(side);
+		this.getArea();
+	}
+	
+	
+
+}
