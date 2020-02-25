@@ -23,7 +23,7 @@ public class PersonMain {
 //		System.out.println(firstPerson.mood);
 //		System.out.println(secondPerson.mood);
 		
-		ArrayList<Person> listPerson = new ArrayList<Person>();
+		List<Person> listPerson = new ArrayList<Person>();
 		listPerson.add(firstPerson);
 		listPerson.add(secondPerson);
 		listPerson.add(thirdPerson);
