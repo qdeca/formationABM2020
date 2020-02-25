@@ -1,5 +1,7 @@
 package fr.abm.firstproject.entity;
 
+import java.util.Date;
+
 public class Person extends Object{
 	
 	public static String mood = "happy";
@@ -11,6 +13,8 @@ public class Person extends Object{
 	private int age;
 
 	private Address address;
+	
+	private Date birthDate;
 	
 	
 	//exemple de constructeur
@@ -55,6 +59,14 @@ public class Person extends Object{
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 	
 	
