@@ -10,18 +10,29 @@ public class LoginMain {
 		System.out.println("Veuillez entrer votre username :");
 		String username = scan.nextLine();
 		System.out.println("Votre username est " + username);
-		
-		try {
-			System.out.println("Veuillez entrer votre age :");
-			int age = scan.nextInt();
-			System.out.println("Votre age est " + age);
-		} catch (InputMismatchException e) {
-			System.out.println("Saisie Incorrecte");
-		}
 
-		
-		
+		try {
+			saisieAge();
+		} catch (InputMismatchException e) {
+			System.out.println("Mauvaise saisie");
+			throw new InputMismatchException();
+		} catch (NullPointerException e) {
+			System.out.println("null");
+		} catch (Exception e) {
+			System.out.println("Une exception est survenue");
+		} finally {
+			System.out.println("Fin du questionnaire");
+		}
 		scan.close();
+	}
+	
+	
+	private static void saisieAge() throws InputMismatchException {
+		Scanner scan2 = new Scanner(System.in);
+		System.out.println("Veuillez entrer votre age :");
+		int age = scan2.nextInt();
+		System.out.println("Votre age est " + age);
+		scan2.close();
 	}
 
 }
