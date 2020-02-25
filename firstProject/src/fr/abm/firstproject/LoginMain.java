@@ -15,9 +15,43 @@ public class LoginMain {
 	public static void main(String[] args) {
 		try {
 			login();
+			menuNavigation();
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+
+
+
+
+	private static void menuNavigation() {
+		try (Scanner scan = new Scanner(System.in)){
+			boolean menuNavigation = true;
+			while (menuNavigation) {
+				System.out.println("Veuillez choisir entre : 1. Création   2. Modification   3. Suppression");
+				
+				int choix = scan.nextInt();
+				switch(choix) {
+					case 1: 	System.out.println("Bienvenue dans le menu de création");
+								break;
+					case 2: 	System.out.println("Bienvenue dans le menu de modification");
+								break;
+					case 3: 	System.out.println("Bienvenue dans le menu de suppression");
+								break;
+					default:	System.out.println("Choix invalide"); 
+				}
+				System.out.println("Voulez-vous revenir au menu principal ou bien quitter l'application ?");
+				System.out.println("1. Menu principal    2. Quitter l'application");
+				choix = scan.nextInt();
+				if (choix != 1) {
+					menuNavigation = false;
+				}
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Mauvais type de réponse");
+		}
+		
 	}
 
 
@@ -29,7 +63,6 @@ public class LoginMain {
 		String username = scan.nextLine();
 		System.out.println("Veuillez entrer votre mot de passe :");
 		String password = scan.nextLine();
-		scan.close();
 		if (CORRECT_USERNAME.equals(username) && CORRECT_PASSWORD.equals(password)) {
 			System.out.println("Bienvenue !");
 		} else {
