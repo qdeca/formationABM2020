@@ -1,6 +1,6 @@
 package fr.abm.geometry.entity;
 
-public class Rectangle {
+public class Rectangle implements Shape{
 	
 	private double length;
 	
@@ -11,7 +11,6 @@ public class Rectangle {
 		this.length = length;
 		this.width = width;
 	}
-	
 	
 	public double getArea() {
 		return length * width;

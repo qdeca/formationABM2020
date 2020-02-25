@@ -2,7 +2,7 @@ package fr.abm.firstproject.entity;
 
 import java.util.Date;
 
-public class Person extends Object{
+public class Person extends Object implements Comparable<Person>{
 	
 	public static String mood = "happy";
 	
@@ -67,6 +67,12 @@ public class Person extends Object{
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	@Override
+	public int compareTo(Person o) {
+		
+		return this.getName().compareTo(o.getName());
 	}
 	
 	
