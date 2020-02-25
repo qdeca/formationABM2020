@@ -22,6 +22,9 @@ public class GeometryMain {
 		
 		System.out.println(triangle);
 
+		GeoUtils.parseDate("");
+		GeoUtils geo = new GeoUtils();
+		geo.generateDate();
 		
 	}
 	

@@ -11,6 +11,12 @@ public class Square extends Rectangle {
 		// return this.width;
 	}
 
+	//polymorphisme
+	@Override
+	public double getArea() {
+		return super.getArea();
+	}
+
 	
 	public void setSide(double side) {
 		this.setLength(side);

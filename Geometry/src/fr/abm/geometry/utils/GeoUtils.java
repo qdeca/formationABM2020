@@ -10,5 +10,19 @@ public class GeoUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		return sdf.parse(stringDate);
 	}
+	
+	public Date generateDate() {
+		return new Date();
+	}
+	
+	// surcharge de méthode
+	public Date generateDate(String stringDate) {
+		return new Date();
+	}
+	
+	
+	public Date generateDatev2() {
+		return generateDate();
+	}
 
 }

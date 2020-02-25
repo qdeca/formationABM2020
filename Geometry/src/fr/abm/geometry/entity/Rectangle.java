@@ -12,14 +12,15 @@ public class Rectangle {
 		this.width = width;
 	}
 	
+	
 	public double getArea() {
-		return this.length * this.width;
+		return length * width;
 	}
 	
-	public double getPerimeter() {
-		return this.length *2 + this.width * 2;
+	public final double getPerimeter() {
+		return this.length *2 + this.width*2;
 	}
-
+	
 	public double getLength() {
 		return length;
 	}

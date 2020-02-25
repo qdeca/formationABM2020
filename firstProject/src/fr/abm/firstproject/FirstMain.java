@@ -18,6 +18,9 @@ public class FirstMain {
 		int test = Math.floorDiv(13, 3);
 		System.out.println(test);
 
+		String nullString = null;
+		nullString.chars();
+		
 	}
 	
 }

@@ -24,6 +24,7 @@ public class Address {
 	public void setStreetNumber(int streetNumber) {
 		this.streetNumber = streetNumber;
 	}
+	
 
 	public String getStreetName() {
 		return streetName;

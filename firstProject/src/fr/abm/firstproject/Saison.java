@@ -2,6 +2,7 @@ package fr.abm.firstproject;
 
 public enum Saison {
 
+	AUTRE,
 	PRINTEMPS (1, ""),
 	ETE (2),
 	AUTOMNE (3, ""),
@@ -14,5 +15,9 @@ public enum Saison {
 	}
 	Saison(int ordre) {
 		this.ordre = ordre;
+	}
+	
+	Saison() {
+		this.ordre = 0;
 	}
 }
