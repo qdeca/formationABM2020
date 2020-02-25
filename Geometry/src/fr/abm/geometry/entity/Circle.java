@@ -1,6 +1,6 @@
 package fr.abm.geometry.entity;
 
-public class Circle {
+public class Circle implements Shape{
 	
 
 	private double radius;

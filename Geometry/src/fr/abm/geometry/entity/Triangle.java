@@ -1,6 +1,6 @@
 package fr.abm.geometry.entity;
 
-public class Triangle {
+public class Triangle  implements Shape{
 	
 	private double base;
 	private double sideB;

@@ -23,7 +23,8 @@ public class PersonMain {
 //		System.out.println(firstPerson.mood);
 //		System.out.println(secondPerson.mood);
 		
-		List<Person> listPerson = new ArrayList<Person>();
+		List<Person> listPerson; // déclaration de la liste (interface)
+		listPerson = new ArrayList<>(); // instanciation de l'ArrayList (classe)
 		listPerson.add(firstPerson);
 		listPerson.add(secondPerson);
 		listPerson.add(thirdPerson);

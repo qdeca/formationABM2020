@@ -1,11 +1,14 @@
 package fr.abm.geometry;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import fr.abm.geometry.entity.Circle;
+import fr.abm.geometry.entity.Shape;
 import fr.abm.geometry.entity.Square;
 import fr.abm.geometry.entity.Triangle;
-import fr.abm.geometry.utils.GeoUtils;
 
 public class GeometryMain {
 
@@ -13,18 +16,15 @@ public class GeometryMain {
 		Triangle triangle = new Triangle(5, 7, 8, 10);
 		Circle circle = new Circle(4);
 		Square square = new Square(6.2);
-		System.out.println("Le triangle créé a un périmètre de " 
-				+ triangle.getPerimeter() + " et une aire de " + triangle.getArea());
-		System.out.println("Le cercle créé a un périmètre de " 
-				+ circle.getPerimeter() + " et une aire de " + circle.getArea());
-		System.out.println("Le carré créé a un périmètre de " 
-				+ square.getPerimeter() + " et une aire de " + square.getArea());
-		
-		System.out.println(triangle);
 
-		GeoUtils.parseDate("");
-		GeoUtils geo = new GeoUtils();
-		geo.generateDate();
+		List<Shape> listShapes = Arrays.asList(triangle, circle, square);
+		
+		for (Shape shape : listShapes) {
+			String[] types = shape.getClass().getName().split("\\.");
+			System.out.println("Le " + types[types.length-1]+ " créé a un périmètre de " + shape.getPerimeter());
+			System.out.println("Le " + types[types.length-1] + " créé a une aire de " + shape.getArea());
+		}
+
 		
 	}
 	

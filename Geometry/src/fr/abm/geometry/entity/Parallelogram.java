@@ -1,6 +1,6 @@
 package fr.abm.geometry.entity;
 
-public class Parallelogram extends Quadrilateral{
+public class Parallelogram extends Quadrilateral  implements Shape{
 
 	@Override
 	public double getArea() {
