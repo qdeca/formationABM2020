@@ -1,5 +1,6 @@
 package fr.abm.firstproject;
 
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -26,7 +27,7 @@ public class LoginMain {
 
 
 	private static void menuNavigation() {
-		try (Scanner scan = new Scanner(System.in)){
+		try (Scanner scan = new Scanner(System.in)){ // try with resources
 			boolean menuNavigation = true;
 			while (menuNavigation) {
 				System.out.println("Veuillez choisir entre : 1. Création   2. Modification   3. Suppression");

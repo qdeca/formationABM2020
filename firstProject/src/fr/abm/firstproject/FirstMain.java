@@ -21,6 +21,7 @@ public class FirstMain {
 		String nullString = null;
 		nullString.chars();
 		
+		
 	}
 	
 }

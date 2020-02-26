@@ -49,6 +49,49 @@ public class Address {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((mail == null) ? 0 : mail.hashCode());
+		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
+		result = prime * result + ((streetName == null) ? 0 : streetName.hashCode());
+		result = prime * result + streetNumber;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Address other = (Address) obj;
+		if (mail == null) {
+			if (other.mail != null)
+				return false;
+		} else if (!mail.equals(other.mail))
+			return false;
+		if (phoneNumber == null) {
+			if (other.phoneNumber != null)
+				return false;
+		} else if (!phoneNumber.equals(other.phoneNumber))
+			return false;
+		if (streetName == null) {
+			if (other.streetName != null)
+				return false;
+		} else if (!streetName.equals(other.streetName))
+			return false;
+		if (streetNumber != other.streetNumber)
+			return false;
+		return true;
+	}
+	
+	
+	
 	
 	
 	

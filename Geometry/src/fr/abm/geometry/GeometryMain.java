@@ -6,9 +6,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import fr.abm.geometry.entity.Circle;
+import fr.abm.geometry.entity.Parallelogram;
 import fr.abm.geometry.entity.Shape;
 import fr.abm.geometry.entity.Square;
 import fr.abm.geometry.entity.Triangle;
+import fr.abm.geometry.service.CalculFormes;
 
 public class GeometryMain {
 
@@ -24,7 +26,10 @@ public class GeometryMain {
 			System.out.println("Le " + types[types.length-1]+ " créé a un périmètre de " + shape.getPerimeter());
 			System.out.println("Le " + types[types.length-1] + " créé a une aire de " + shape.getArea());
 		}
-
+		
+		CalculFormes<Triangle> calc = new CalculFormes<>(triangle);
+		System.out.println(calc.getTypeClass(listShapes)); 
+		System.out.println(calc.computeAreaAndPerimeter()); 
 		
 	}
 	

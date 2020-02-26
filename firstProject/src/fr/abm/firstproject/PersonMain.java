@@ -28,10 +28,23 @@ public class PersonMain {
 //		secondPerson.mood = "sad";
 //		System.out.println(firstPerson.mood);
 //		System.out.println(secondPerson.mood);
-		mapSaisons();
-		//personMap(firstPerson, secondPerson, thirdPerson, fourthPerson);
+		//mapSaisons();
+		personMap(firstPerson, secondPerson, thirdPerson, fourthPerson);
 		
+		//personEquality();
+		//dateManipulation();
+	}
 
+	private static void personEquality() {
+		Person firstPerson = new Person("Dupont", "Jean", 42);
+		Person secondPerson = new Person("Dubois", "Jean", 40);
+		secondPerson.setName("Dupont");
+		secondPerson.setAge(42);
+		System.out.println(firstPerson.equals(secondPerson));
+		
+	}
+
+	private static void dateManipulation() {
 		LocalDate today = LocalDate.now();
 		LocalDate firstOfMonth = DateUtils.getFirstDayOfMonth(today);
 		System.out.println(firstOfMonth);
@@ -39,7 +52,7 @@ public class PersonMain {
 
 	private static void personList(Person firstPerson, Person secondPerson, Person thirdPerson) {
 		List<Person> listPerson; // déclaration de la liste (interface)
-		listPerson = new ArrayList<>(); // instanciation de l'ArrayList (classe)
+		listPerson = new ArrayList<Person>(); // instanciation de l'ArrayList (classe)
 		listPerson.add(firstPerson);
 		listPerson.add(secondPerson);
 		listPerson.add(thirdPerson);
@@ -68,10 +81,10 @@ public class PersonMain {
 												  // associées à un âge donné 
 												  // (âge = key, liste personne = value)
 		mapAgePersons = new HashMap<>(); // instanciation de la HashMap (classe)
-		insertPerson(mapAgePersons, firstPerson);
-		insertPerson(mapAgePersons, secondPerson);
-		insertPerson(mapAgePersons, thirdPerson);
-		insertPerson(mapAgePersons, fourthPerson);
+		insertPerson(mapAgePersons, firstPerson); // ajout d'une nouvelle clé/valeur dans la map
+		insertPerson(mapAgePersons, secondPerson); // ajout d'une nouvelle clé/valeur dans la map
+		insertPerson(mapAgePersons, thirdPerson); // ajout d'une nouvelle clé/valeur dans la map
+		insertPerson(mapAgePersons, fourthPerson); // modification d'une clé/valeur existante
 		
 		
 		for (Entry<Integer, List<Person>> entry : mapAgePersons.entrySet()) { // moyen de parcourir 
@@ -90,16 +103,17 @@ public class PersonMain {
 	/**
 	 * Insère dans la map spécifiée une personne 
 	 * @param mapAgePersons relie toutes les personnes d'un âge donné
-	 * @param firstPerson personne à ajouter à la map existante
+	 * @param person personne à ajouter à la map existante
 	 */
-	private static void insertPerson(Map<Integer, List<Person>> mapAgePersons, Person firstPerson) {
-		List<Person> listPersons = mapAgePersons.get(firstPerson.getAge()); 
+	private static void insertPerson(Map<Integer, List<Person>> mapAgePersons, Person person) {
+		int cleMap = person.getAge();
+		List<Person> listPersons = mapAgePersons.get(cleMap); 
 									// on récupère la liste de personnes associées à un âge donné
-		if (listPersons == null) { // si la map ne contient aucune personne de cet âge encore
-			listPersons = new ArrayList<>();	// on créé la liste
+		if (listPersons == null) { 	// si la map ne contient aucune personne de cet âge encore
+			listPersons = new ArrayList<>();		// on créé la liste
 		}
-		listPersons.add(firstPerson);			// on ajoute la personne à la liste
-		mapAgePersons.put(firstPerson.getAge(), listPersons);   // on met à jour la liste dans la map
+		listPersons.add(person);					// on ajoute la personne à la liste
+		mapAgePersons.put(cleMap, listPersons);   	// on met à jour la liste dans la map
 		
 	}
 	
@@ -110,6 +124,7 @@ public class PersonMain {
 		mapSaisons.put("Eté", 2);
 		mapSaisons.put("Automne", 3);
 		mapSaisons.put("Hiver", 4);
+		mapSaisons.put("Printemps", 5);		
 		for (Entry<String, Integer> entry : mapSaisons.entrySet()) {
 			System.out.println(entry.getKey() + " est la saison n° " + entry.getValue());
 		}
