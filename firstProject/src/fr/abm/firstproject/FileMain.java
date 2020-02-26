@@ -6,12 +6,17 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
+import fr.abm.firstproject.dataservice.AddressFileDAO;
+import fr.abm.firstproject.entity.Address;
+
 public class FileMain {
 	
 	
 	public static void main(String[] args) {
-		logWrite();
-		logRead();
+//		logWrite();
+//		logRead();
+		//createAddress();
+		readAddress();
 	}
 
 	private static void logWrite() {
@@ -33,5 +38,18 @@ public class FileMain {
 			System.out.println("Problème lors de l'accès du fichier de log :" + e.getMessage());
 		}
 	}
+	
+	private static void createAddress() {
+		AddressFileDAO dao = new AddressFileDAO();
+		Address address = new Address(42, "rue de la republique", "0645789651", "test.test@test.fr");
+		dao.create(address);
+	}
 
+	private static void readAddress() {
+		AddressFileDAO dao = new AddressFileDAO();
+		List<Address> listAddress = dao.readAllLines();
+		for(Address address : listAddress) {
+			System.out.println(address);
+		}
+	}
 }
