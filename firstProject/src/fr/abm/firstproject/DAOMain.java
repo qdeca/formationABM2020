@@ -7,10 +7,8 @@ public class DAOMain {
 	
 	
 	public static void main(String[] args) {
-		AddressDAO dao = new AddressDAO();
 		Address address = new Address(42, "rue de la republique", "0645789651", "test.test@test.fr");
-
-		dao.create(address);
+		AddressDAO.create(address);
 	}
 
 }
