@@ -4,6 +4,8 @@ package fr.abm.firstproject;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import fr.abm.firstproject.utils.Configuration;
+
 public class LoginMain {
 	
 	
@@ -64,7 +66,9 @@ public class LoginMain {
 		String username = scan.nextLine();
 		System.out.println("Veuillez entrer votre mot de passe :");
 		String password = scan.nextLine();
-		if (CORRECT_USERNAME.equals(username) && CORRECT_PASSWORD.equals(password)) {
+		Configuration config = Configuration.getInstance();
+		Configuration config2 = Configuration.getInstance();
+		if (config.getPropertyValue("username").equals(username) && config.getPropertyValue("password").equals(password)) {
 			System.out.println("Bienvenue !");
 		} else {
 			throw new Exception("Problème dans le login");
