@@ -1,28 +1,31 @@
 package fr.natsystem.quiz_manager;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
+import org.junit.Test;
+
+public class AppTest {
 
 
-public class AppTest 
-    extends TestCase
-{
-
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
-
-
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-
+	
+	public double computation(double a, double b, BiFunction<Double, Double, Double> f) {
+		return f.apply(a, b);
+	}
+	
+	public double computation(double a, Function<Double, Double> f) {
+		return f.apply(a);
+	}
+	
+	@Test
     public void testApp()
     {
-        assertTrue( true );
+        System.out.println(computation(5, 2, Math::pow));
+        System.out.println(computation(4, 3, Math::hypot));
+        System.out.println(computation(4.5, Math::floor));
+       
     }
+	
+	
+	
 }

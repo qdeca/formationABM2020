@@ -47,6 +47,46 @@ public class QuizDAO extends AbstractDAO<Quiz> {
 			return null;
 		}
 	}
+	
+	public Quiz getById(int id) {
+		TopicDAO topicDAO = new TopicDAO();
+		try {
+			Connection conn = getConnection();
+			PreparedStatement statement = conn.prepareStatement("SELECT * FROM QUIZ WHERE ID=?");
+			statement.setInt(1, id);
+			ResultSet resultSet = statement.executeQuery();
+			resultSet.next();
+			String title = resultSet.getString(2);
+			int topicId = resultSet.getInt(3);
+			Topic topic = topicDAO.getTopicById(topicId);
+			Quiz quiz = new Quiz(id, title, topic);
+		
+			return quiz;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public Quiz getByTitle(String title) {
+		TopicDAO topicDAO = new TopicDAO();
+		try {
+			Connection conn = getConnection();
+			PreparedStatement statement = conn.prepareStatement("SELECT * FROM QUIZ WHERE TITLE=?");
+			statement.setString(1, title);
+			ResultSet resultSet = statement.executeQuery();
+			resultSet.next();
+			int id = resultSet.getInt(1);
+			int topicId = resultSet.getInt(3);
+			Topic topic = topicDAO.getTopicById(topicId);
+			Quiz quiz = new Quiz(id, title, topic);
+		
+			return quiz;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public void update(Quiz quiz) {
 		try {
