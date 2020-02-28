@@ -18,6 +18,15 @@ public class TopicDaoTest {
 		Assert.assertNotNull(topicFromDB);
 		topicDAO.deleteByName("Java");
 	}
+	
+	@Test
+	public void testReadingTopic() {
+		Topic topic = new Topic("Java");
+		topicDAO.create(topic);
+		Topic topicFromDB = topicDAO.getTopicByName("Java");
+		Assert.assertNotNull(topicFromDB);
+		topicDAO.deleteByName("Java");
+	}
 
 
 }
