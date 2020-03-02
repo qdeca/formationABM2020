@@ -2,9 +2,15 @@ package fr.abm.quiz_manager.dataservice;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.abm.quiz_manager.entity.Choice;
+import fr.abm.quiz_manager.entity.Difficulty;
+import fr.abm.quiz_manager.entity.Question;
+import fr.abm.quiz_manager.entity.Quiz;
 
 public class ChoiceDAO extends AbstractDAO<Choice> {
 
@@ -47,6 +53,27 @@ public class ChoiceDAO extends AbstractDAO<Choice> {
 			statement.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public List<Choice> getChoicesFromQuestion(Question	question) {
+		List<Choice> listChoices = new ArrayList<>();
+		try {
+			Connection conn = getConnection();
+			PreparedStatement statement = conn.prepareStatement("SELECT * FROM CHOICE WHERE QUESTION_ID = ?");
+			statement.setInt(1, question.getId());
+			ResultSet resultSet = statement.executeQuery();
+			while(resultSet.next()) {
+				int id = resultSet.getInt(1);
+				String name	= resultSet.getString(2);
+				boolean correct = resultSet.getBoolean(3);
+				Choice choice = new Choice(id, name, question, correct);
+				listChoices.add(choice);
+			}
+			return listChoices;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 

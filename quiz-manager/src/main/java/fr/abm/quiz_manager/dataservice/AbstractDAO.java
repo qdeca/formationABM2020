@@ -11,7 +11,7 @@ public abstract class AbstractDAO<T> {
 	private Configuration configuration = Configuration.getInstance();
 	
 	protected Connection getConnection() throws SQLException {
-		Connection conn = DriverManager.getConnection(configuration.getPropertyValue("db_url"), 
+		Connection conn = DriverManager.getConnection(configuration.getPropertyValue("db_url")+";DB_CLOSE_ON_EXIT=FALSE", 
 												configuration.getPropertyValue("db_username"), 
 												configuration.getPropertyValue("db_password"));
 		return conn;

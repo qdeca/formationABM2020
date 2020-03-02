@@ -60,7 +60,7 @@ public class QuestionDAO extends AbstractDAO<Question> {
 		QuizDAO quizDAO = new QuizDAO();
 		try {
 			Connection conn = getConnection();
-			PreparedStatement statement = conn.prepareStatement("SELECT * FROM QUESTIONS");
+			PreparedStatement statement = conn.prepareStatement("SELECT * FROM QUESTION");
 			ResultSet resultSet = statement.executeQuery();
 			while(resultSet.next()) {
 				int id = resultSet.getInt(1);
@@ -68,6 +68,28 @@ public class QuestionDAO extends AbstractDAO<Question> {
 				Difficulty difficulty = Difficulty.valueOf(resultSet.getString(3));
 				int quizId = resultSet.getInt(4);
 				Quiz quiz = quizDAO.getById(quizId);
+				Question question = new Question(id, name, quiz, difficulty);
+				listQuestions.add(question);
+			}
+			return listQuestions;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Question> getQuestionsFromQuiz(Quiz quiz) {
+		List<Question> listQuestions = new ArrayList<>();
+		QuizDAO quizDAO = new QuizDAO();
+		try {
+			Connection conn = getConnection();
+			PreparedStatement statement = conn.prepareStatement("SELECT * FROM QUESTION WHERE QUIZ_ID = ?");
+			statement.setInt(1, quiz.getId());
+			ResultSet resultSet = statement.executeQuery();
+			while(resultSet.next()) {
+				int id = resultSet.getInt(1);
+				String name	= resultSet.getString(2);
+				Difficulty difficulty = Difficulty.valueOf(resultSet.getString(3));
 				Question question = new Question(id, name, quiz, difficulty);
 				listQuestions.add(question);
 			}

@@ -7,8 +7,6 @@ public class Person {
 	private String name;
 	
 	private String surname;
-	
-	private Person spouse;
 
 	
 	public Person(String name, String surname) {
@@ -42,14 +40,6 @@ public class Person {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
-	}
-
-	public Person getSpouse() {
-		return spouse;
-	}
-
-	public void setSpouse(Person spouse) {
-		this.spouse = spouse;
 	}
 
 	
